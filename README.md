@@ -1,1 +1,1 @@
-# Systemy-Komputerowe-RISC-V-
+# Systemy_Komputerowe(RISC-V)
