@@ -1,0 +1,45 @@
+
+
+pobieranie parametrów ma działać w ten sposób:
+program.exe -parametr1 "nazwa_pliku" -parametr2 "nazwa_pliku2" ...
+po nazwie parametru podajemy nazwę pliku potrzebną do tej części
+
+
+
+main ma wykonać następujące rzeczy po kolei
+
+jeżeli mamy parametr -code pomieramy przez input(...) i wskaźnik zapisujemy do zmiennej machine_code
+jeżeli mamy parametr -codeb pomieramy przez inputb(...) i wskaźnik zapisujemy do zmiennej machine_code
+brak  code/codeb  wyrzuca błąd  ( po prosu niech wypisuje komunikat błędu i kończy działanie)
+
+jeżeli mamy -din pobieramy przez input(...) i wskaźnik zapisujemy do zmiennej m_data_in
+analogicznie -dinb przez inputb(...)
+brak din/dinb jest ignorowany (ewentualnie komunikat z warning'iem)
+
+jeżeli mamy -regin wczytujemy plik  przez input(...) i zapisujemy wskaźnik do gl_reg_tab
+tablica gl_reg_tab ma mieć 128 bajtów pierwsze 4 bajty mają być wycięte do zmiennej uint32_t gl_pc a 4 pierwsze bajty w gl_reg_tab mają być równe 0
+długość tablicy > 128 ma być ignorowane (nie ma błędu nie przejmujemy się)
+długość tablicy < 128 warning i poprawienie wielkości tablicy do 128 wypełniając zerami
+-reginb to samo tylko przez inputb 
+brak regin/reginb zaalokowanie pamięci wypełnionej zerami bez generowania błędu gl_reg_tab[32]={0}; gl_pc=0;
+
+/* oznaczone miejsce na moją inwencję twórczą
+ *
+ *
+ */ 
+ 
+jeżeli mamy -regout to 4 bajty z gl_pc (uint32_t) są przepisane do pierwszych czterech bajtów gl_reg_tab i zapisywana jest tablica gl_reg_tab przez output(...)
+-regoutb to samo tylko z outputb(...)
+brak regout/regoutb jest ignorowany
+
+-dout zapisujemy m_data_out dza pomocą output(...)// jeszcze nie wiem jak ten fragment będzie wyglądał to możesz tu przygotować bazę do ostatecznego podpięcia
+-doutb outputb(...)
+brak dout/doutb jest ignorowany
+
+
+
+
+
+
+
+parametry: -code -codeb -din -dout -dinb -doutb -regin -regout -reginb -regoutb

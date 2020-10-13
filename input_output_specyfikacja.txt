@@ -1,0 +1,20 @@
+#include <stdint.h>
+
+uint8_t * input(char * file_name,int * len_ptr)
+uint8_t * inputb(char * file_name,int * len_ptr)
+funkcja ma wczytać po nazwie plik zaalokować pamięć poleceniem malloc i zrócić wskaźnik do zaalokowanej tablicy
+a pod adres wskaźnika len_ptr ma zapisać długość tablicy
+wersja z "b" ma wczytać plik binarny (test2)
+wersja bez "b"ma wczytać plik tekstowy z zapisanym kodem szesnastkowym i ma pomijać wszystkie znaki nie będące  ze zbioru "0123456789abcdefABCDEF" (test1) 
+
+w test1/2 jest zapisane [16,31,74,179,64] 
+
+
+void output(char * file_name,uint8_t * data,int len)
+void outputb(char * file_name,uint8_t * data,int len)
+funkcja ma zapisać do pliku o nazwie (file_name) z tablicy data o długości len
+wersja z b ma zapisać plik binarny
+wersja bez b ma zapisać plik tekstowy z zapisanym kodem szesnastkowym
+
+
+specyfikację maina dopiszę później(nie jest tak pilnie potrzebna)
